@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +8,20 @@ namespace Expr4 {
 	class Program {
 		static void Main(string[] args) {
 			int n = Int32.Parse(Console.ReadLine());
-				int x = Int32.Parse(Console.ReadLine());
+			int x = Int32.Parse(Console.ReadLine());
 			int y = Int32.Parse(Console.ReadLine());
 
-			Console.WriteLine( (int)(((double)n-0.5)/x) + (int)(((double)n - 0.5)/y) - (int)(((double)n - 0.5)/(x*y)) );
+			Console.WriteLine((int)(((double)n - 0.5) / x) + (int)(((double)n - 0.5) / y) - (int)(((double)n - 0.5) / (Some(x, y))));
 			Console.ReadKey();
+		}
+
+		static int Some(int x, int y) {
+			if (x == y) {
+				return x;
+			}
+			else {
+				return x * y;
+			}
 		}
 	}
 }
