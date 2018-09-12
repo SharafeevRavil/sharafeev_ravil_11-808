@@ -11,8 +11,17 @@ namespace Expr4 {
 				int x = Int32.Parse(Console.ReadLine());
 			int y = Int32.Parse(Console.ReadLine());
 
-			Console.WriteLine( (int)(((double)n-0.5)/x) + (int)(((double)n - 0.5)/y) - (int)(((double)n - 0.5)/(x*y)) );
+			Console.WriteLine( (int)(((double)n-0.5)/x) + (int)(((double)n - 0.5)/y) - (int)(((double)n - 0.5)/(SomeFunc(x, y)) );
 			Console.ReadKey();
+		}
+
+		static int SomeFunc(int x, int y) {
+			if (x == y) {
+				return x;
+			}
+			else {
+				return x * y;
+			}
 		}
 	}
 }
