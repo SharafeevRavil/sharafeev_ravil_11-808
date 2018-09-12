@@ -14,13 +14,9 @@ class Program {
 		string[] inputs = userInput.Split();
 
 		double summ = double.Parse(inputs[0]);
-		double percent = double.Parse(inputs[1]) / 1200;
+		double percent = double.Parse(inputs[1]) / 1200 + 1;
 		int months = Int32.Parse(inputs[2]);
-
-		for (int i = 0; i < months; i++) {
-			summ += summ * percent;
-		}
-
-		return summ;
+	
+		return summ * Math.Pow(percent, months);
 	}
 }
