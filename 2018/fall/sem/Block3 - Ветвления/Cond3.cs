@@ -33,6 +33,9 @@ namespace ConsoleApp3 {
 					Console.WriteLine("Yes");
 				}
 			}
+
+			Console.WriteLine( ((GetSum(second) - GetSum(first) == 1) ? (second % 10 != 0) : (second % 10 !=9)) ? "Yes" : "No");
+
 			Console.ReadKey();
 		}
 

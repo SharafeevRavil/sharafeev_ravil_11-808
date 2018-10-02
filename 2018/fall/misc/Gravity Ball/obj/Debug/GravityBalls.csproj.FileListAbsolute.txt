@@ -1,0 +1,7 @@
+C:\Users\home\Desktop\Gravity Ball\bin\Debug\GravityBalls.exe.config
+C:\Users\home\Desktop\Gravity Ball\bin\Debug\GravityBalls.exe
+C:\Users\home\Desktop\Gravity Ball\bin\Debug\GravityBalls.pdb
+C:\Users\home\Desktop\Gravity Ball\obj\Debug\GravityBalls.csprojAssemblyReference.cache
+C:\Users\home\Desktop\Gravity Ball\obj\Debug\GravityBalls.csproj.CoreCompileInputs.cache
+C:\Users\home\Desktop\Gravity Ball\obj\Debug\GravityBalls.exe
+C:\Users\home\Desktop\Gravity Ball\obj\Debug\GravityBalls.pdb
