@@ -1,0 +1,11 @@
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\bin\Debug\Lexicographical Sorting.exe.config
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\bin\Debug\Lexicographical Sorting.exe
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\bin\Debug\Lexicographical Sorting.pdb
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\obj\Debug\Lexicographical Sorting.csprojAssemblyReference.cache
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\obj\Debug\Lexicographical Sorting.csproj.CoreCompileInputs.cache
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\obj\Debug\Lexicographical Sorting.exe
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\obj\Debug\Lexicographical Sorting.pdb
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\bin\Debug\nunit.framework.dll
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\bin\Debug\nunit.framework.pdb
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\bin\Debug\nunit.framework.xml
+C:\Users\home\source\repos\Lexicographical Sorting\Lexicographical Sorting\obj\Debug\Lexicographical Sorting.csproj.CopyComplete
