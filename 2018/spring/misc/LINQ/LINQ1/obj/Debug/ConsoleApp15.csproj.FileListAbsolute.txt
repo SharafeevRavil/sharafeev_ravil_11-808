@@ -1,0 +1,7 @@
+D:\LINQ\LINQ1\bin\Debug\ConsoleApp15.exe.config
+D:\LINQ\LINQ1\bin\Debug\ConsoleApp15.exe
+D:\LINQ\LINQ1\bin\Debug\ConsoleApp15.pdb
+D:\LINQ\LINQ1\obj\Debug\ConsoleApp15.csprojAssemblyReference.cache
+D:\LINQ\LINQ1\obj\Debug\ConsoleApp15.csproj.CoreCompileInputs.cache
+D:\LINQ\LINQ1\obj\Debug\ConsoleApp15.exe
+D:\LINQ\LINQ1\obj\Debug\ConsoleApp15.pdb
