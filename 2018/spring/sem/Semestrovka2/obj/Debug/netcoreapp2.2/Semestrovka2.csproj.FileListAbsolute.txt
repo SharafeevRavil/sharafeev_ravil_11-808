@@ -1,0 +1,11 @@
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\bin\Debug\netcoreapp2.2\Semestrovka2.deps.json
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\bin\Debug\netcoreapp2.2\Semestrovka2.runtimeconfig.json
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\bin\Debug\netcoreapp2.2\Semestrovka2.runtimeconfig.dev.json
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\bin\Debug\netcoreapp2.2\Semestrovka2.dll
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\bin\Debug\netcoreapp2.2\Semestrovka2.pdb
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\obj\Debug\netcoreapp2.2\Semestrovka2.csprojAssemblyReference.cache
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\obj\Debug\netcoreapp2.2\Semestrovka2.csproj.CoreCompileInputs.cache
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\obj\Debug\netcoreapp2.2\Semestrovka2.AssemblyInfoInputs.cache
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\obj\Debug\netcoreapp2.2\Semestrovka2.AssemblyInfo.cs
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\obj\Debug\netcoreapp2.2\Semestrovka2.dll
+C:\Users\home\source\repos\Semestrovka2\Semestrovka2\obj\Debug\netcoreapp2.2\Semestrovka2.pdb
