@@ -9,16 +9,21 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SocialNetwork.Models;
+using SocialNetwork.Services;
 
 namespace SocialNetwork.Pages.Posts
 {
     public class Edit : PageModel
     {
         private readonly IWebHostEnvironment _env;
+        private readonly Storage _storage;
+        private readonly ImagesService _imagesService;
 
-        public Edit(IWebHostEnvironment env)
+        public Edit(IWebHostEnvironment env, Storage storage, ImagesService imagesService)
         {
             _env = env;
+            _storage = storage;
+            _imagesService = imagesService;
         }
 
         [BindProperty] public Post Post { get; set; }
@@ -26,21 +31,7 @@ namespace SocialNetwork.Pages.Posts
 
         public IActionResult OnGet(int id)
         {
-            var postsDirInfo = new DirectoryInfo(_env.WebRootPath + "/Posts/");
-            if (!postsDirInfo.Exists)
-            {
-                postsDirInfo.Create();
-            }
-
-            var postsFileInfo = new FileInfo(postsDirInfo + "PostsData.csv");
-            if (!postsFileInfo.Exists)
-            {
-                postsFileInfo.Create().Close();
-            }
-
-            using var reader = new StreamReader(postsFileInfo.FullName);
-            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-            Post = csv.GetRecords<Post>().FirstOrDefault(x => x.Id == id);
+            Post = _storage.FindPost(id);
             if (Post == null)
             {
                 return NotFound();
@@ -56,63 +47,14 @@ namespace SocialNetwork.Pages.Posts
                 return Page();
             }
 
-            var postsDirInfo = new DirectoryInfo(_env.WebRootPath + "/Posts/");
-            if (!postsDirInfo.Exists)
-            {
-                postsDirInfo.Create();
-            }
-
-            var postsFileInfo = new FileInfo(postsDirInfo + "PostsData.csv");
-            if (!postsFileInfo.Exists)
-            {
-                postsFileInfo.Create().Close();
-            }
-
-            List<Post> posts;
-            using (var reader = new StreamReader(postsFileInfo.FullName))
-            {
-                using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-                posts = csv.GetRecords<Post>().ToList();
-            }
-
-            //FIXME:: get post from file
-            Post post = posts.FirstOrDefault(x => x.Id == Post.Id);
+            Post post = _storage.FindPost(Post.Id);
             if (post == null)
             {
                 return NotFound();
             }
+            await post.ApplyChanges(EditedPost, _imagesService);
 
-            if (EditedPost.ImageFile != null)
-            {
-                string imageName = Guid.NewGuid() + new FileInfo(EditedPost.ImageFile.FileName).Extension;
-
-                var imagesDirInfo = new DirectoryInfo(_env.WebRootPath + "/Images/");
-                if (!imagesDirInfo.Exists)
-                {
-                    imagesDirInfo.Create();
-                }
-
-                await using var fileStream = new FileStream(imagesDirInfo.FullName + imageName, FileMode.Create);
-                await EditedPost.ImageFile.CopyToAsync(fileStream);
-
-                post.ImageName = imageName;
-            }
-
-            if (!String.IsNullOrEmpty(EditedPost.Name))
-            {
-                post.Name = EditedPost.Name;
-            }
-
-            if (!String.IsNullOrEmpty(EditedPost.Text))
-            {
-                post.Text = EditedPost.Text;
-            }
-
-            await using (var writer = new StreamWriter(postsFileInfo.FullName))
-            {
-                await using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-                csv.WriteRecords(posts);
-            }
+            await _storage.AddPostAsync(post);
 
             return RedirectToPage("./Index");
         }

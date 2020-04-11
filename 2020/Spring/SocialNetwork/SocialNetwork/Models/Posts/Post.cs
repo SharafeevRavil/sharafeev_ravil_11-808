@@ -1,20 +1,39 @@
 ﻿using System;
+using System.Threading.Tasks;
+using SocialNetwork.Services;
 
 namespace SocialNetwork.Models
 {
     public class Post
     {
-        public Post()
+        public static async Task<Post> GetPostFromAddedAsync(AddedPost addedPost, ImagesService imagesService)
         {
+            return new Post
+            {
+                Id = -1,
+                Name = addedPost.Name,
+                Text = addedPost.Text,
+                DateTime = DateTime.Now,
+                ImageName = await imagesService.LoadImageAsync(addedPost.ImageFile)
+            };
         }
 
-        public Post(int id, string name, string text, string imageName, DateTime dateTime)
+        public async Task ApplyChanges(EditedPost editedPost, ImagesService imagesService)
         {
-            Id = id;
-            Name = name;
-            Text = text;
-            ImageName = imageName;
-            DateTime = dateTime;
+            if (editedPost.ImageFile != null)
+            {
+                ImageName = await imagesService.LoadImageAsync(editedPost.ImageFile);
+            }
+
+            if (!String.IsNullOrEmpty(editedPost.Name))
+            {
+                Name = editedPost.Name;
+            }
+
+            if (!String.IsNullOrEmpty(editedPost.Text))
+            {
+                Text = editedPost.Text;
+            }
         }
 
         public int Id { get; set; }

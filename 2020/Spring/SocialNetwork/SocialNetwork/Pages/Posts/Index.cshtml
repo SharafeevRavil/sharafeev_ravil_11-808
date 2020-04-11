@@ -31,6 +31,19 @@
         <form method="post">
             <button type="submit" asp-page-handler="delete" asp-route-id="@post.Id">Удалить</button>
         </form>
+
+        <hr width="300" align="left"/>
+        <a asp-page="./Comments/Add" asp-route-id="@post.Id">Добавить комментарий</a>
+        @if (Model.Comments.ContainsKey(post.Id) && Model.Comments[post.Id].Count > 0)
+        {
+            <hr width="300" align="left"/>
+            <h4>Комментарии:</h4>
+            @foreach (var comment in Model.Comments[post.Id])
+            {
+                <hr width="300" align="left"/>
+                <h5>@comment.Text</h5>
+            }
+        }
     }
 </div>
 </body>

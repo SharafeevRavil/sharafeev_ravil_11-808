@@ -13,6 +13,7 @@ using SocialNetwork.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SocialNetwork.Services;
 
 namespace SocialNetwork
 {
@@ -29,6 +30,10 @@ namespace SocialNetwork
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddTransient<Storage>();
+            services.AddTransient<ImagesService>();
+            
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
