@@ -1,0 +1,29 @@
+﻿@page "{id:int}"
+@model SocialNetwork.Pages.Posts.Edit
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Редактирование поста</title>
+</head>
+<body>
+<div>
+    <h2>Изменение поста №@Model.Post.Id</h2>
+    
+    <form method="post" enctype="multipart/form-data">
+            <label asp-for="EditedPost.Name"></label><br/>
+            <input value="@Model.Post.Name" asp-for="EditedPost.Name"/><br/>
+            <label asp-for="EditedPost.Text"></label><br/>
+            <input value="@Model.Post.Text" asp-for="EditedPost.Text"/><br/>
+            <label asp-for="EditedPost.ImageFile"></label><br/>
+            <input value="@Model.Post.ImageName" asp-for="EditedPost.ImageFile" type="file"/><br/>
+            <input type="submit"/>
+        </form>
+</div>
+</body>
+</html>
