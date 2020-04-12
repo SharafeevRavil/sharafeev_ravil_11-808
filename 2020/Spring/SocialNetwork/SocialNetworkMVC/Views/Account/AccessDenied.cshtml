@@ -1,0 +1,9 @@
+﻿@model string
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Доступ к запрашиваемой странице @Model запрещен</h2>
+<a asp-controller="Home" asp-action="Index">Вернуться на домашнюю страницу</a>
