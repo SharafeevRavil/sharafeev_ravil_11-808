@@ -13,14 +13,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SocialNetworkIdentity.Services;
+using SocialNetworkIdentity.Services.Notifications;
 
 namespace SocialNetworkIdentity
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _env;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -38,6 +42,16 @@ namespace SocialNetworkIdentity
             
             services.AddScoped<PostsService>();
             services.AddScoped<CommentsService>();
+            
+            
+            if (_env.IsDevelopment())
+            {
+                services.AddScoped<INotificationService, EmailNotificationService>();
+            }
+            else
+            {
+                services.AddScoped<INotificationService, SmsNotificationService>();
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
