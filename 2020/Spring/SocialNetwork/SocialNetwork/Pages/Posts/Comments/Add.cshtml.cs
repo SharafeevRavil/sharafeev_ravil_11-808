@@ -25,6 +25,10 @@ namespace SocialNetwork.Pages.Posts.Comments
 
         public async Task<IActionResult> OnPostAsync(int postId)
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
             Comment.PostId = postId;
             await _storage.AddCommentAsync(Comment);
             return RedirectToPage("./../Index");

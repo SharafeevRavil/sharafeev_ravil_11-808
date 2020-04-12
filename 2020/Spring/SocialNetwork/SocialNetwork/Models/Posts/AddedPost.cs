@@ -1,21 +1,22 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
+using SocialNetwork.Validation;
 
 namespace SocialNetwork.Models
 {
     public class AddedPost
     {
-        [Required(ErrorMessage = "Добавьте название")]  
-        [Display(Name = "Название")]  
+        [Display(Name = "Название")]
+        [RegularExpr("(^(Пост))(.+)", ErrorMessage = "Название поста должно начинаться с \"Пост\"")]
         public string Name { get; set; }
-        
-        [Required(ErrorMessage = "Добавьте текст")]  
-        [Display(Name = "Текст")]  
+
+        [Display(Name = "Текст")]
+        [NotEmpty(ErrorMessage = "Добавьте текст")]
         public string Text { get; set; }
-        
-        [Required(ErrorMessage = "Добавьте изображение")]  
-        [Display(Name = "Изображение")]  
+
+        [Display(Name = "Изображение")]
+        [Required(ErrorMessage = "Добавьте изображение")]
         public IFormFile ImageFile { get; set; }
     }
 }

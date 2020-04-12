@@ -17,7 +17,8 @@
 
     <form method="post" enctype="multipart/form-data">
         <label asp-for="Comment.Text"></label><br/>
-        <input asp-for="Comment.Text"/><br/>
+        <input asp-for="Comment.Text"/>
+        @Html.ValidationMessageFor(x => x.Comment.Text)<br/>
         <input type="hidden" name="postId" value="@Model.PostId"/>
         <input type="submit"/>
     </form>
