@@ -1,0 +1,16 @@
+﻿@model SocialNetworkIdentity.ViewModels.Comments.CommentCreateViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Edit comment</h2>
+@using (Html.BeginForm("Edit", "Comment", new {ViewBag.Id}))
+{
+    @Html.EditorForModel()
+    <hr/>
+    <div>
+        <input type="submit" value="Edit"/>
+    </div>
+}

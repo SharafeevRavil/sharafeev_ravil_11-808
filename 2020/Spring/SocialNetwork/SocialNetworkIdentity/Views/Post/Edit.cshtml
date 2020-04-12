@@ -1,0 +1,16 @@
+﻿@model SocialNetworkIdentity.ViewModels.Posts.PostCreateViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Edit post</h2>
+@using (Html.BeginForm("Edit", "Post", new {ViewBag.Id}))
+{
+    @Html.EditorForModel()
+    <hr/>
+    <div>
+        <input type="submit" value="Edit"/>
+    </div>
+}
