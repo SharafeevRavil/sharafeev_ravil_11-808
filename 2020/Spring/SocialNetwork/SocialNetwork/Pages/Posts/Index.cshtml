@@ -1,0 +1,50 @@
+﻿@page
+@model SocialNetwork.Pages.Posts.Index
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Список постов</title>
+</head>
+<body>
+<div>
+    <h2>
+        <a asp-page="./Add">Добавить новый пост</a>
+    </h2>
+    <h2>Список всех постов:</h2>
+
+    @foreach (var post in Model.Posts)
+    {
+        <hr>
+        <h4> @post.Name </h4>
+        <h5> @post.Text </h5>
+        <img width="100" height="100" src="~/Images/@post.ImageName" alt="No Image Found"/>
+        <br/>
+        <a asp-page="./Edit" asp-route-id="@post.Id">Изменить</a>
+        <br/>
+        <form method="post">
+            <button type="submit" asp-page-handler="delete" asp-route-id="@post.Id">Удалить</button>
+        </form>
+
+        <hr width="300" align="left"/>
+        <a asp-page="./Comments/Add" asp-route-id="@post.Id">Добавить комментарий</a>
+        @if (Model.Comments.ContainsKey(post.Id) && Model.Comments[post.Id].Count > 0)
+        {
+            <hr width="300" align="left"/>
+            <h4>Комментарии:</h4>
+            @foreach (var comment in Model.Comments[post.Id])
+            {
+                <hr width="300" align="left"/>
+                <h5>@comment.Text</h5>
+            }
+        }
+    }
+</div>
+</body>
+</html>

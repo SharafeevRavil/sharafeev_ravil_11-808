@@ -1,0 +1,64 @@
+﻿@model System.Collections.Generic.List<SocialNetworkIdentity.ViewModels.Posts.PostFullViewModel>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Posts:</h2>
+<hr/>
+
+<h2>
+    <a asp-controller="Post" asp-action="Create">Create new post</a>
+</h2>
+<hr/>
+
+@for (var i = 0; i < Model.Count; i++)
+{
+    <p>
+        <b>
+            @Html.LabelFor(x => x[i].Creator):
+        </b>
+        @Html.DisplayFor(x => x[i].Creator)
+        <b>
+            @Html.LabelFor(x => x[i].DateTime):
+        </b>
+        @Html.DisplayFor(x => x[i].DateTime)
+        <a asp-controller="Post" asp-action="Edit" asp-route-id="@Model[i].Id">Edit post</a>
+    </p>
+    <p>
+        <b>
+            @Html.LabelFor(x => x[i].Text):
+        </b>
+        @Html.DisplayFor(x => x[i].Text)
+    </p>
+
+    <h5>
+        Comments:
+    </h5>
+    <hr/>
+    @for (var j = 0; j < Model[i].Comments.Count; j++)
+    {
+        <p>
+            <b>
+                @Html.LabelFor(x => x[i].Comments[j].Creator):
+            </b>
+            @Html.DisplayFor(x => x[i].Comments[j].Creator)
+            <b>
+                @Html.LabelFor(x => x[i].Comments[j].DateTime):
+            </b>
+            @Html.DisplayFor(x => x[i].Comments[j].DateTime)
+            <a asp-controller="Comment" asp-action="Edit" asp-route-id="@Model[i].Comments[j].Id">Edit comment</a>
+        </p>
+        <p>
+            <b>
+                @Html.LabelFor(x => x[i].Comments[j].Text):
+            </b>
+            @Html.DisplayFor(x => x[i].Comments[j].Text)
+        </p>
+        <hr/>
+    }
+    <a asp-controller="Comment" asp-action="Create" asp-route-postId="@Model[i].Id">Create new comment</a>
+
+    <hr/>
+}

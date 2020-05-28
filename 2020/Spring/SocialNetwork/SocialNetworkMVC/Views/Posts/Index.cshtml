@@ -1,0 +1,50 @@
+@model IEnumerable<SocialNetworkMVC.Models.Post>
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var item in Model)
+{
+    @Html.DisplayFor(modelItem => item.Name)
+    <br/>
+    @Html.DisplayFor(modelItem => item.Creator.Email)
+    <br/>
+    @Html.DisplayFor(modelItem => item.Text)
+    <br/>
+    @Html.DisplayFor(modelItem => item.ImageSource)
+    <br/>
+    @Html.DisplayFor(modelItem => item.DateTime)
+    <br/>
+    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+    <h6>Comments:</h6>
+    <a asp-controller="Comments" asp-action="Create" asp-route-id="@item.Id">Добавить комментарий</a>
+    @foreach (var comment in item.Comments)
+    {
+        <h6>
+            @comment.Creator.Email
+        </h6>
+        <p>
+            @comment.Text
+        </p>
+    }
+    <hr/>
+}
+
+</body>
+</html>

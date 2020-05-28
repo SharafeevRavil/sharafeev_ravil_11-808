@@ -1,0 +1,33 @@
+﻿@page
+@model SocialNetwork.Pages.Posts.Add
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Добавить пост</title>
+</head>
+<body>
+<div>
+    <h3>Добавить новый пост:</h3>
+
+    <form method="post" enctype="multipart/form-data">
+        <label asp-for="AddedPost.Name"></label><br/>
+        <input asp-for="AddedPost.Name"/>
+        @Html.ValidationMessageFor(x => x.AddedPost.Name)<br/>
+        <label asp-for="AddedPost.Text"></label><br/>
+        <input asp-for="AddedPost.Text"/>
+        @Html.ValidationMessageFor(x => x.AddedPost.Text)<br/>
+        <label asp-for="AddedPost.ImageFile"></label><br/>
+        <input asp-for="AddedPost.ImageFile" type="file"/>
+        @Html.ValidationMessageFor(x => x.AddedPost.ImageFile)<br/>
+
+        <input type="submit"/>
+    </form>
+</div>
+</body>
+</html>

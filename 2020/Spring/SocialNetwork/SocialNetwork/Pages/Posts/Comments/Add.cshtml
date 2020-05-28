@@ -1,0 +1,27 @@
+﻿@page "{id:int}"
+@model SocialNetwork.Pages.Posts.Comments.Add
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Добавить комментарий к посту @Model.PostId</title>
+</head>
+<body>
+<div>
+    <h3>Добавить комментарий к посту @Model.PostId:</h3>
+
+    <form method="post" enctype="multipart/form-data">
+        <label asp-for="Comment.Text"></label><br/>
+        <input asp-for="Comment.Text"/>
+        @Html.ValidationMessageFor(x => x.Comment.Text)<br/>
+        <input type="hidden" name="postId" value="@Model.PostId"/>
+        <input type="submit"/>
+    </form>
+</div>
+</body>
+</html>
